@@ -17,11 +17,6 @@ export const swaggerDefinition = {
       }
     }
   },
-  security: [
-    {
-      bearerAuth: []
-    }
-  ],
   tags: [
     {
       name: 'Agents',

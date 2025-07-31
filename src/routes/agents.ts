@@ -108,8 +108,6 @@ const router = Router();
  *     summary: Get all agents
  *     description: Retrieve a list of all available agents from the database
  *     tags: [Agents]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Successfully retrieved agents
@@ -133,14 +131,6 @@ const router = Router();
  *                   name: "Customer Support Agent"
  *                   type: "Support"
  *                   status: "Active"
- *       401:
- *         description: Unauthorized - Invalid or missing admin token
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *             example:
- *               error: "Auth: Invalid admin token"
  *       500:
  *         description: Internal server error
  *         content:
@@ -151,7 +141,8 @@ const router = Router();
  *               error: "Failed to retrieve agents"
  *               details: "Database connection error"
  */
-router.get('/agents', adminAuth, getAgentsController)
+router.get('/agents', getAgentsController)
+// router.get('/agents', adminAuth, getAgentsController)
 
 /**
  * @swagger
@@ -160,8 +151,6 @@ router.get('/agents', adminAuth, getAgentsController)
  *     summary: Create a new agent
  *     description: Create a new agent with the provided information. The agent ID will be automatically generated.
  *     tags: [Agents]
- *     security:
- *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -199,14 +188,6 @@ router.get('/agents', adminAuth, getAgentsController)
  *             example:
  *               error: "Invalid body"
  *               details: "Expected string, received number at 'name'"
- *       401:
- *         description: Unauthorized - Invalid or missing admin token
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *             example:
- *               error: "Auth: Invalid admin token"
  *       500:
  *         description: Internal server error
  *         content:
@@ -217,7 +198,8 @@ router.get('/agents', adminAuth, getAgentsController)
  *               error: "Failed to create agent"
  *               details: "Database write operation failed"
  */
-router.post('/agents', adminAuth, createAgentController)
+router.post('/agents', createAgentController)
+// router.post('/agents', adminAuth, createAgentController)
 
 /**
  * @swagger
@@ -226,8 +208,6 @@ router.post('/agents', adminAuth, createAgentController)
  *     summary: Get agent by ID
  *     description: Retrieve a specific agent by their unique identifier
  *     tags: [Agents]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -261,14 +241,6 @@ router.post('/agents', adminAuth, createAgentController)
  *               $ref: '#/components/schemas/Error'
  *             example:
  *               error: "Invalid input. Agent ID is required."
- *       401:
- *         description: Unauthorized - Invalid or missing admin token
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *             example:
- *               error: "Auth: Invalid admin token"
  *       404:
  *         description: Agent not found
  *         content:
@@ -287,7 +259,8 @@ router.post('/agents', adminAuth, createAgentController)
  *               error: "Failed to retrieve agent"
  *               details: "Database query failed"
  */
-router.get('/agents/:id', adminAuth, getAgentController)
+router.get('/agents/:id', getAgentController)
+// router.get('/agents/:id', adminAuth, getAgentController)
 
 /**
  * @swagger
