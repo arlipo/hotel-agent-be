@@ -33,7 +33,7 @@ export function validateAgentForQuestion(agent: Agent): Probably<void> {
 export function askAgent(agent: Agent, question: string): Probably<string> {
     return mapProbably(validateAgentForQuestion(agent), () => {
         const answers = searchFAQ(question)
-        const filteredAnswers = answers.filter(a => a.score > 5);
+        const filteredAnswers = answers.filter(a => a.score > 10);
         const bestAnswer = filteredAnswers.length > 0 && filteredAnswers.sort((a, b) => b.score - a.score)[0]
         const bestAnswerLog = bestAnswer ? `Best answer: ${bestAnswer.id} with score ${bestAnswer.score}` : 'No suitable answer found';
 
