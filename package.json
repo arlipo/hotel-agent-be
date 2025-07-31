@@ -24,7 +24,8 @@
   "scripts": {
     "dev": "tsx watch src/app.ts",
     "build": "esbuild src/app.ts --bundle --platform=node --outfile=dist/app.js --format=esm --packages=external",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "generate-swagger": "tsx scripts/generate-swagger-json.js"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",

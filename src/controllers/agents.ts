@@ -3,7 +3,7 @@ import { getAgentDb, getAgentsDb } from "../database/repository";
 import { handleApiError } from "../utils/apiUtils";
 import { errored, isErrored, zodSafeParse } from "../utils/probablyUtils";
 import { AgentDtoSchema, AgentQuestionSchema } from "../types/agents";
-import { askAgent, createAgent } from "../services/agents";
+import { askAgent, createAgent, validateAgentForQuestion } from "../services/agents";
 
 
 export const getAgentsController: RequestHandler = async (req, res, next) => {
